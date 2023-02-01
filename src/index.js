@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 
 import "./styles/index.css";
@@ -16,63 +16,71 @@ import headerData from "./data/headers.js";
 import imageData from "./data/images.js";
 import imageWidthData from "./data/imageWidth.js";
 import imageHeightData from "./data/imageHeight.js";
+import imageCarousel from "./data/imageCarousel";
+import textCarousel from "./data/textCarousel";
 
-class Page extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      whichPage: 0,
-      navbarButtons: navButtonData,
-      titles: titleData,
-      images: imageData,
-      imageWidth: imageWidthData,
-      imageHeight: imageHeightData,
-      header: headerData,
-    };
-  }
+function Page(props) {
+  const {
+    navbarButtons,
+    titles,
+    images,
+    imageWidth,
+    imageHeight,
+    header,
+    imageCarousel,
+    textCarousel,
+  } = props;
 
-  render() {
-    return (
-      <div>
-        <div className="title">
-          <Title index={this.state.whichPage} titles={this.state.titles} />
-        </div>
-        <div className="nav-bar-background">
-          <div className="nav-bar-buttons">
-            <NavigationButtons
-              navbarButtons={this.state.navbarButtons}
-              whichPage={this.state.whichPage}
-              onChange={(value) => this.setState({ whichPage: value })}
-            />
-          </div>
-        </div>
-        <div className="contents">
-          <Contents
-            whichPage={this.state.whichPage}
-            header={this.state.header}
-            images={this.state.images}
-            imageWidth={this.state.imageWidth}
-            imageHeight={this.state.imageHeight}
-            imageCarousel={this.state.imageCarousel}
-            textCarousel={this.state.textCarousel}
+  const [whichPage, changePage] = useState(props.whichPage);
+
+  return (
+    <div>
+      <div className="title">
+        <Title index={whichPage} titles={titles} />
+      </div>
+      <div className="nav-bar-background">
+        <div className="nav-bar-buttons">
+          <NavigationButtons
+            navbarButtons={navbarButtons}
+            whichPage={whichPage}
+            buttonClick={changePage}
           />
         </div>
-        <div className="footer-background">
-          <Footer />
-        </div>
       </div>
-    );
-  }
+      <div className="contents">
+        <Contents
+          whichPage={whichPage}
+          header={header}
+          images={images}
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
+          imageCarousel={imageCarousel}
+          textCarousel={textCarousel}
+        />
+      </div>
+      <div className="footer-background">
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
-class Website extends React.Component {
-  render() {
-    return (
-      <div className="website">
-        <Page />
-      </div>
-    );
-  }
+function Website() {
+  return (
+    <div className="website">
+      <Page
+        whichPage={0}
+        navbarButtons={navButtonData}
+        titles={titleData}
+        images={imageData}
+        imageWidth={imageWidthData}
+        imageHeight={imageHeightData}
+        header={headerData}
+        imageCarousel={imageCarousel}
+        textCarousel={textCarousel}
+      />
+    </div>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

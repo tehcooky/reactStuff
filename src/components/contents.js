@@ -16,43 +16,31 @@ import page4Data from "../data/page4Data.js";
 
 const contentData = [page1Data, page2Data, page3Data, page4Data];
 
-class Contents extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      header: props.header,
-      images: props.images,
-      imageWidth: props.imageWidth,
-      imageHeight: props.imageHeight,
-    };
-  }
+function Contents(props) {
+  const { whichPage, header, images, imageWidth, imageHeight } = props;
 
-  convertFileToTags = (pageInfo) => {
-    const pageData = pageInfo;
-    for (var i = 0; i < pageData.length; i++) {
-      var imageNumber = pageData[i];
-      if (pageData[i].toString().includes("image")) {
-        imageNumber = imageNumber.replace("image", "");
-        pageData[i] = (
+  function convertFileToTags(pageInfo) {
+    for (var i = 0; i < pageInfo.length; i++) {
+      if (pageInfo[i].toString().includes("image")) {
+        pageInfo[i] = pageInfo[i].replace("image", "");
+        pageInfo[i] = (
           <Image
-            whichPage={this.props.whichPage}
-            whichImage={imageNumber}
-            images={this.state.images}
-            imageWidth={this.state.imageWidth}
-            imageHeight={this.state.imageHeight}
+            whichPage={whichPage}
+            whichImage={pageInfo[i]}
+            images={images}
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
           />
         );
       }
-      if (pageData[i] == "header") {
-        pageData[i] = (
-          <Header header={this.state.header} whichPage={this.props.whichPage} />
-        );
+      if (pageInfo[i] == "header") {
+        pageInfo[i] = <Header header={header} whichPage={whichPage} />;
       }
-      if (pageData[i] == "paragraph") {
-        pageData[i] = <Text whichPage={this.props.whichPage} />;
+      if (pageInfo[i] == "paragraph") {
+        pageInfo[i] = <Text whichPage={whichPage} />;
       }
-      if (pageData[i] == "carousel") {
-        pageData[i] = (
+      if (pageInfo[i] == "carousel") {
+        pageInfo[i] = (
           <ImageCarousel
             imageCarousel={imageCarouselData}
             textCarousel={textCarouselData}
@@ -60,27 +48,11 @@ class Contents extends React.Component {
         );
       }
     }
-    return pageData;
-  };
-
-  render() {
-    return (
-      <div className="contents">
-        {this.convertFileToTags(contentData[this.props.whichPage])}
-        {/* <Image
-          whichPage={this.props.whichPage}
-          images={this.state.images}
-          imageWidth={this.state.imageWidth}
-          imageHeight={this.state.imageHeight}
-        />
-        <Header header={this.state.header} whichPage={this.props.whichPage} />
-        <Text whichPage={this.props.whichPage} />
-        <ImageCarousel
-          imageCarousel={imageCarouselData}
-          textCarousel={textCarouselData}
-        /> */}
-      </div>
-    );
+    return pageInfo;
   }
+
+  return (
+    <div className="contents">{convertFileToTags(contentData[whichPage])}</div>
+  );
 }
 export default Contents;

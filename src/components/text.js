@@ -9,46 +9,37 @@ const paragraphs1 = paragraphs1fromfile;
 const paragraphs2 = paragraphs2fromfile;
 const paragraphs3 = paragraphs3fromfile;
 const paragraphs4 = paragraphs4fromfile;
+const paragraphs = [paragraphs1, paragraphs2, paragraphs3, paragraphs4];
 
-class Text extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      paragraphs: "0",
-    };
-  }
+function Text(props) {
+  const { whichPage } = props;
 
-  buildParagraphs = (paragraphs) => {
-    this.state.paragraphs = paragraphs;
-    var builtParagraphs = this.state.paragraphs.map((paragraphs, i) => {
-      return <p>{paragraphs}</p>;
+  function buildParagraphs(props) {
+    var builtParagraphs = props.map((paragraphs, i) => {
+      return paragraphs;
     });
     return <div>{builtParagraphs}</div>;
-  };
+  }
 
-  paragraphToShow = (i) => {
+  function paragraphToShow(i) {
     switch (i + 1) {
       case 1:
-        return this.buildParagraphs(paragraphs1);
+        return buildParagraphs(paragraphs1);
       case 2:
-        return this.buildParagraphs(paragraphs2);
+        return buildParagraphs(paragraphs2);
       case 3:
-        return this.buildParagraphs(paragraphs3);
+        return buildParagraphs(paragraphs3);
       case 4:
-        return this.buildParagraphs(paragraphs4);
+        return buildParagraphs(paragraphs4);
     }
     return "this page doesnt have any paragraphs";
-  };
-
-  render() {
-    return (
-      <div>
-        <div className="paragraphs">
-          {this.paragraphToShow(this.props.whichPage)}
-        </div>
-      </div>
-    );
   }
+
+  return (
+    <div>
+      <div className="paragraphs">{paragraphToShow(whichPage)}</div>
+    </div>
+  );
 }
 
 export default Text;

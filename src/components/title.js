@@ -1,6 +1,6 @@
 function Title(props) {
-  let titles = props.titles;
-  return titles[props.index];
+  const { titles, index } = props;
+  return titles[index];
 }
 
 export default Title;

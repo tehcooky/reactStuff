@@ -1,22 +1,12 @@
 import React from "react";
-//import "../styles/index.css";
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      headers: props.header,
-    };
-  }
+function Header(props) {
+  const { header, whichPage } = props;
 
-  render() {
-    return (
-      <h2>
-        <div className="headers">
-          {this.state.headers[this.props.whichPage]}
-        </div>
-      </h2>
-    );
-  }
+  return (
+    <h2>
+      <div className="headers">{header[whichPage]}</div>
+    </h2>
+  );
 }
 export default Header;

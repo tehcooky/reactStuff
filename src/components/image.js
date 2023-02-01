@@ -1,32 +1,22 @@
 import React from "react";
 
-class Image extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      whichPage: props.whichPage,
-      images: props.images,
-      imageWidth: props.imageWidth,
-      imageHeight: props.imageHeight,
-    };
+function Image(props) {
+  const { images, imageWidth, imageHeight, whichImage } = props;
+
+  function imageToRender(i) {
+    return images[i];
   }
 
-  imageToRender = (i) => {
-    return this.state.images[i];
-  };
-
-  render() {
-    return (
-      <div className="image">
-        <img
-          src={this.imageToRender(this.props.whichImage)}
-          alt={this.imageToRender(this.props.whichImage)}
-          width={this.state.imageWidth[this.props.whichImage]}
-          height={this.state.imageHeight[this.props.whichImage]}
-        ></img>
-      </div>
-    );
-  }
+  return (
+    <div className="image">
+      <img
+        src={imageToRender(whichImage)}
+        alt={imageToRender(whichImage)}
+        width={imageWidth[whichImage]}
+        height={imageHeight[whichImage]}
+      ></img>
+    </div>
+  );
 }
 
 export default Image;
