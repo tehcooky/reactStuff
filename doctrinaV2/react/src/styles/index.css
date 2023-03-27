@@ -1,0 +1,141 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+body {
+  background: #333;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+.spacing {
+  padding-bottom: 50px;
+}
+.spacing-top {
+  padding-top: 50px;
+}
+.c1 {
+  padding-top: 20px;
+  width: 30%;
+  height: 30%;
+  margin: auto;
+}
+
+.image {
+  padding-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+}
+.title {
+  font: 70px "Century Gothic", Futura, sans-serif;
+  background: rgb(123, 37, 173);
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+  text-decoration: underline;
+}
+.navbarLinks {
+  background-color: black;
+}
+.navbarLink {
+  font-size: large;
+  display: inline-block;
+  background-color: blueviolet;
+  border-color: black;
+  border-radius: 5px;
+  text-align: center;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.nav-bar-background {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  background: rgb(123, 37, 173);
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav-bar-buttons {
+  background: rgb(123, 37, 173);
+  padding-top: 10px;
+  text-align: center;
+  border-radius: 12px;
+}
+.navbarButton {
+  margin-bottom: 10px;
+  background-color: rgb(123, 37, 173);
+  border: 4px, black;
+  color: black;
+  padding: 0px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.contents {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  background: rgb(123, 37, 173);
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  min-height: 500px;
+  text-align: center;
+}
+
+.headers {
+  padding-top: 5px;
+  margin-left: 20px;
+  text-decoration: underline;
+}
+
+.paragraphs {
+  margin-left: 20px;
+}
+
+.footer-background {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  background: rgb(123, 37, 173);
+  margin-top: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  min-height: 50px;
+}
+.footer {
+  padding-top: 5px;
+  text-align: center;
+}
+.formBackground {
+  text-align: center;
+  background-color: rgb(190, 69, 69);
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.formBackgroundLarge {
+  text-align: center;
+  background-color: rgb(190, 69, 69);
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-bottom: 1%;
+}
+
+.loggedinstate {
+  text-align: center;
+  background-color: rgb(190, 69, 69);
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.registrationFormFields {
+  text-align: right;
+  padding-right: 32%;
+}
